@@ -57,6 +57,6 @@ This is a simple command-line tool that fetches the recent activity of a specifi
 
 For more details about the project and to view the roadmap, visit the [project page](https://roadmap.sh/projects/github-user-activity).
 
-## Contributing
+## Contributing 
 
 Feel free to fork this repository and submit pull requests. Contributions are welcome!
