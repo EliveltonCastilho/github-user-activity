@@ -44,11 +44,32 @@ Sample solution for the [github-user-activity](https://roadmap.sh/projects/githu
     ```bash
     🔍 Welcome to the GitHub User Activity Fetcher 🔍
 
-    Please enter the GitHub username: octocat
+    Please enter the GitHub username: kamranahmedse
     ```
 
 3. The script will fetch and display the user's recent activity.
 
+    ```bash
+    📊 Recent Activity for GitHub User: kamranahmedse
+
+    ==================================================
+    📝 Event Type: PushEvent
+    📂 Repository: kamranahmedse/developer-roadmap
+    ⏰ Created At: August 29, 2024 at 05:15 PM
+    🔗 Commit SHA: fbf32e0f73fbacc8225ac9d1ca41eb5541a47487
+    ✍️ Author: Kamran Ahmed
+    💬 Message: Change title for git and github roadmap
+    🔗 URL: https://api.github.com/repos/kamranahmedse/developer-roadmap/commits/fbf32e0f73fbacc8225ac9d1ca41eb5541a47487
+    --------------------------------------------------
+    📝 Event Type: PushEvent
+    📂 Repository: kamranahmedse/developer-roadmap
+    ⏰ Created At: August 29, 2024 at 04:58 PM
+    🔗 Commit SHA: 03f989f2343130a5fbb9a567bd5b57094abe1777
+    ✍️ Author: Kamran Ahmed
+    💬 Message: Update UI for share solutions
+    🔗 URL: https://api.github.com/repos/kamranahmedse/developer-roadmap/commits/03f989f2343130a5fbb9a567bd5b57094abe1777
+    --------------------------------------------------
+    ```
 ## Error Handling
 
 - If the user does not exist, you will see an error message.
