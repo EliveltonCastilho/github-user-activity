@@ -3,13 +3,22 @@ from datetime import datetime
 
 def fetch_github_user_events(username):
     url = f'https://api.github.com/users/{username}/events'
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"\n❌ Error: Could not fetch events for user '{username}' (HTTP {response.status_code})\n")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Will raise an HTTPError for bad responses
+    except requests.exceptions.HTTPError as http_err:
+        if response.status_code == 404:
+            print(f"\n❌ Error: User '{username}' not found.\n")
+        elif response.status_code == 403:
+            print(f"\n❌ Error: API rate limit exceeded. Please try again later.\n")
+        else:
+            print(f"\n❌ HTTP Error occurred: {http_err} (HTTP {response.status_code})\n")
         return None
+    except requests.exceptions.RequestException as err:
+        print(f"\n❌ Error: A problem occurred while trying to fetch data: {err}\n")
+        return None
+
+    return response.json()
 
 def format_event_time(timestamp):
     event_time = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%SZ')
@@ -17,6 +26,7 @@ def format_event_time(timestamp):
 
 def print_github_events(events, username):
     if not events:
+        print(f"\nℹ️ No recent events found for user '{username}'.\n")
         return
     
     print(f"\n📊 Recent Activity for GitHub User: {username}\n")
@@ -43,7 +53,12 @@ def print_github_events(events, username):
 
 def main():
     print("🔍 Welcome to the GitHub User Activity Fetcher 🔍\n")
-    username = input("Please enter the GitHub username: ")
+    username = input("Please enter the GitHub username: ").strip()
+    
+    if not username:
+        print("❌ Error: Username cannot be empty.\n")
+        return
+    
     events = fetch_github_user_events(username)
     
     if events:
