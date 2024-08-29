@@ -1,6 +1,7 @@
-# GitHub User Activity Fetcher
+# github-user-activity
 
-This is a simple command-line tool that fetches the recent activity of a specified GitHub user using the GitHub API. The script is written in Python and only requires the `requests` library.
+Sample solution for the [github-user-activity](https://roadmap.sh/projects/github-user-activity) challenge from [roadmap.sh](https://roadmap.sh/).
+
 
 ## Features
 
